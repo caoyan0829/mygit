@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<link rel="stylesheet" href="css/dafeiji.css" />
+		
+		<script src="js/base.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/gameEngine.js"></script>
+		<script src="js/myPlane.js"></script>
+		<script src="js/bullet.js"></script>
+		<script src="js/enemy.js"></script>
+		<script>
+			onload = function(){	
+				let ul = document.getElementById("list");
+				let ali = ul.getElementsByTagName("li");
+				let t1=document.getElementById("head");
+				for (let i=0; i<ali.length; i++) {
+					ali[i].onclick = function(){
+						//移除
+						ul.parentNode.removeChild(ul);
+						t1.style.display="none";
+						//子弹的发射时间间隔
+						myPlane().fireInterval = this.value-0;
+						
+						//开始游戏
+						gameEngine.init().start();
+					}
+				}	
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main" >
+			<div id="head">仰望星空，同时也要脚踏实地。渴望web前端大牛的力量，我会努力向前。</div>
+			<ul id="list">
+				<li value="1000">地狱模式~</li>
+				<li value="300">常规模式~</li>
+				<li value="50">凯哥无敌~</li>
+				<li value="10">动感光波~</li>
+			</ul>
+			<div id="myLove">爱前端，更爱静静~</div>
+		</div>
+	</body>
+</html>
