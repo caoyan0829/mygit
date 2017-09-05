@@ -1,0 +1,103 @@
+$n:none;
+* {margin: 0; border: $n; padding: 0;}
+body, html {width: 100%; height: 100%; overflow: hidden;}
+ul, li {list-style: $n;}
+/*主菜单*/
+$w:200px;
+$h:70px;
+$a:absolute;
+$r:relative;
+#main {
+    width: $w+280px;
+    height: 100%;
+    background: url(../images2/bg.jpg) repeat-y;
+    margin: 0 auto;
+    position: $r;
+    ul{
+        width: $w;
+        position: $a;
+        left: 90px;
+        top: $w;
+        li {
+            width: $w+100px;
+            height: $h;
+            border: 1px solid black;
+            background: green;
+            color: white;
+            font{
+              family:"微软雅黑" ;
+            }
+            text-align: center;
+            line-height: $h;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 30px;
+        }
+    }
+}
+//样式重用
+@mixin myStyle($myw,$myh,$myl,$myt){
+  width: $myw;
+  height:$myh;
+  position: $a; //引用前面定义的$a参数
+  left:$myl;
+  top:$myt;
+}
+/*加载游戏界面*/
+.logo {
+  @include myStyle(428px,104px,26px,20%);
+  background:  url(../images2/logo.png) no-repeat;
+}
+.load {
+  @include myStyle(200px,42px,140px,70%);
+  background: url(../images2/loading1.png) no-repeat;
+}
+.myplane{
+  @include myStyle(98px,122px,0,0);
+  background: url(../images2/me.png) no-repeat;
+}
+/*子弹*/
+.bullet {
+  @include myStyle(7px,18px,0,0);
+  background: url(../images2/bullet.png) no-repeat;
+}
+/*子弹-die*/
+.bullet-die {
+  @include myStyle(40px,43px,0,0);
+  background: url(../images2/die1.png) no-repeat;
+}
+/*大型敌机*/
+.enemy-large {
+  @include myStyle(165px,256px,0,0);
+  background: url(../images2/plane3.png) no-repeat;
+}
+/*中型敌机*/
+.enemy-middle {
+  @include myStyle(70px,92px,0,0);
+  background: url(../images2/plane2.png) no-repeat;
+}
+/*小型敌机*/
+.enemy-small {
+  @include myStyle(59px,36px,0,0);
+  background: url(../images2/plane1.png) no-repeat;
+}
+$t30:30px;
+#head{
+  position: $a;
+  width: 420px;
+  font-size: 30px;
+  top: $t30;
+  left: $t30+5px;
+  color: purple;
+  text-align: center;
+}
+#myLove{
+  color: pink;
+  font-size: 50px;
+  position:$a;
+  top: 300px;
+  left: $t30+5px;
+  display: $n;
+  z-index: 9999;
+}
